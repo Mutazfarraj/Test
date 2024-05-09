@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -107,6 +108,24 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'You have pushed the button this many times:',
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * .70,
+              height: MediaQuery.of(context).size.height * .30,
+              child: GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(
+                    double.parse("31.963158"),
+                    double.parse("31.963158"),
+                  ),
+                  zoom: 16,
+                ),
+                // markers: markers.values.toSet(),
+                mapType: MapType.hybrid,
+                zoomControlsEnabled: true,
+                minMaxZoomPreference: MinMaxZoomPreference.unbounded,
+                // onMapCreated: _onMapCreated,
+              ),
             ),
             Text(
               '$_counter',
